@@ -3,7 +3,6 @@ A modern, responsive web application to explore the Pokémon universe. Built wit
 
 
 Tech Stack:
-
 1) Next.js (App Router).
 2) Tailwind CSS.
 3) NextAuth.js.
@@ -26,8 +25,6 @@ NEXTAUTH_SECRET=*****************
 
 4) Run the development server:
 npm run dev
-
-
 
 Challenges & Solutions:
 
@@ -52,3 +49,4 @@ Key Features:
 
 
 Live demo:
+https://pokedex-two-zeta-24.vercel.app/
