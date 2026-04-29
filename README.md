@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Pokedex:
+A modern, responsive web application to explore the Pokémon universe. Built with Next.js, this project features search, type filtering, and a personalized favorites system.
 
-## Getting Started
 
-First, run the development server:
+Tech Stack:
 
-```bash
+1) Next.js (App Router).
+2) Tailwind CSS.
+3) NextAuth.js.
+4) Lucide React.
+5) React Hot Toast.
+
+Installation & Setup:
+
+1) Clone the repository:
+git clone https://github.com/mohammadsaber-net/pokedex.git
+
+2) Install dependencies:
+npm install
+
+3) Configure Environment Variables:
+GOOGLE_CLIENT_ID=**********
+GOOGLE_CLIENT_SECRET=*********
+NEXTAUTH_URL=****************
+NEXTAUTH_SECRET=***************** 
+
+4) Run the development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Challenges & Solutions:
 
-## Learn More
+1) searching:
+**Challenge: The PokeAPI does not support partial name searches (e.g., searching for "Pika" instead of "Pikachu").
 
-To learn more about Next.js, take a look at the following resources:
+**Solution: Instead of making a network request for every search, I implemented a strategy to fetch the names of 1000 Pokémon upon the first search input focusing.
+then I filtered this data on the client side, resulting in an instantaneous search experience and reduced API load.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2) State Synchronization Across Components:
+**Challenge: The "Favorite" (Heart) icon exists in two places: the main card and the details modal. Updating one did not reflect in the other.
+**Solution: I utilized Custom Browser Events to broadcast a favoritesChanged signal. Every "Heart" component listens for this signal and updates its state automatically, ensuring a consistent UI across the entire app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+Key Features: 
+1) Google Auth
+2) Instant Search
+3) Type Filtering
+4) Lazy-Loaded Animations
+5) Favorites System which is protected by authentication
+6) Fully Responsive
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Live demo:

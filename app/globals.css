@@ -24,3 +24,12 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+header{
+  background: #b43a87;
+  background: linear-gradient(90deg, rgba(180, 58, 135, 1) 31%, rgba(225, 62, 154, 1) 64%);
+}
+.details{
+  transition: opacity 0.25s ease;
+
+  
+}
