@@ -15,7 +15,8 @@ export default function MainData (){
     if (allPokemon || searchLoading) return;
     setSearchLoading(true);
     try {
-        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1000");
+        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1000",
+        { cache: "no-store" });
         const data = await res.json();
         setAllPokemon(data.results);
     } catch (error) {
@@ -30,7 +31,8 @@ export default function MainData (){
         return
       }
       const res = await fetch(
-        `https://pokeapi.co/api/v2/type/${type}`
+        `https://pokeapi.co/api/v2/type/${type}`,
+        { cache: "no-store" }
       );
       const data = await res.json();
       setDataType(data.pokemon.map((p: any) => p.pokemon));
@@ -59,7 +61,18 @@ export default function MainData (){
       :dataType 
       ?dataType 
       :data?.results
-  return !loading?(
+  return (loading || !data)?(
+  <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+  {[...Array(20)].map((_, i) => (
+    <div
+      key={i}
+      className="rounded-xl p-4 shadow-md animate-pulse bg-white"
+    >
+      <div className="w-full h-32 bg-gray-200 rounded-lg mb-4" />
+      <div className="h-4 w-2/3 bg-gray-200 rounded mb-2" />
+    </div>
+  ))}</section>
+  ):(
   <>
   <div className="my-2 flex justify-between gap-4 flex-col md:flex-row md:items-center">
     <select
@@ -82,7 +95,8 @@ export default function MainData (){
   </div>
   <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
     {renderedData?.map((pokemon: any) => {
-      const id = pokemon.url.split('/').filter(Boolean).pop();
+      if (!pokemon?.url || !pokemon?.name) return null;
+      const id = pokemon.url.replace(/\/$/, "").split("/").pop();
       const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
       return(<ShowPokemon key={pokemon.name} pokemon={pokemon} image={image} />)
     })}
@@ -109,17 +123,5 @@ export default function MainData (){
         </button>
       </div>
     </>
-  ):(
-    <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-  {[...Array(20)].map((_, i) => (
-    <div
-      key={i}
-      className="rounded-xl p-4 shadow-md animate-pulse bg-white"
-    >
-      <div className="w-full h-32 bg-gray-200 rounded-lg mb-4" />
-      <div className="h-4 w-2/3 bg-gray-200 rounded mb-2" />
-    </div>
-  ))}
-</section>
   )
 }
