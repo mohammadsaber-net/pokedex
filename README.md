@@ -3,11 +3,11 @@ A modern, responsive web application to explore the Pokémon universe. Built wit
 
 
 Tech Stack:
-1) Next.js (App Router).
-2) Tailwind CSS.
-3) NextAuth.js.
-4) Lucide React.
-5) React Hot Toast.
+1) Next.js (App Router): Chosen for its superior performance, optimized routing, and SEO capabilities.
+2) Tailwind CSS: Used for rapid, responsive UI development without the overhead of external CSS files.
+3) NextAuth.js: Integrated to provide secure and seamless Google Authentication.
+4) Lucide React: For lightweight, customizable icons that match the modern aesthetic.
+5) React Hot Toast: To provide immediate, non-intrusive feedback for user actions like adding favorites.
 
 Installation & Setup:
 
