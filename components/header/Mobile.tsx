@@ -13,10 +13,10 @@ export default function Mobile({setLogin,favoritesCount}:Props) {
   return (
     <>
     <Menu onClick={()=>setOpenMobile(true)} className="md:hidden cursor-pointer" />
-    <nav className={`absolute ${openMobile?"right-0":"-right-full"} 
-    top-0 h-screen w-[70%] 
-    bg-[#b43a87]/70 backdrop-blur-sm text-white flex flex-col items-center gap-6 pt-20 
-    transition-all duration-300 ease-in-out z-[100000000]`}>
+    <nav className={`absolute ${openMobile?"opacity-100 z-[1000000000] pointer-events-auto"
+    :"pointer-events-none -z-40 opacity-0"}
+    top-0 h-screen w-[70%] top-0 right-0 transition-all duration-300 ease-in-out 
+    bg-[#b43a87]/70 backdrop-blur-sm text-white flex flex-col items-center gap-6 pt-20 `}>
     <X onClick={()=>setOpenMobile(false)} className="absolute top-4 right-4 cursor-pointer" />
     <Link 
     onClick={()=>setOpenMobile(false)}
